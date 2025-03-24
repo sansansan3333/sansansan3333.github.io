@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据库慨念与MySQL入门-笔记2, 学习，生活">
+    <meta name="keywords" content="数据库慨念与MySQL入门-笔记3, 学习，生活">
     <meta name="description" content="san的个人博客，关于学习和生活">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>数据库慨念与MySQL入门-笔记2 | SAN~blog</title>
+    <title>数据库慨念与MySQL入门-笔记3 | SAN~blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据库慨念与MySQL入门-笔记2</h1>
+                    <h1 class="description center-align post-title">数据库慨念与MySQL入门-笔记3</h1>
                 </div>
             </div>
         </div>
@@ -429,9 +429,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/MySQL/">
+                                <span class="chip bg-color">MySQL</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -452,7 +456,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2025-03-21
+                    2025-03-24
                 </div>
                 
 
@@ -473,61 +477,29 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="SQL-基本查询操作"><a href="#SQL-基本查询操作" class="headerlink" title="SQL 基本查询操作"></a>SQL 基本查询操作</h1><h2 id="1-基本数据查询"><a href="#1-基本数据查询" class="headerlink" title="1. 基本数据查询"></a>1. 基本数据查询</h2><p>使用 <code>SELECT</code> 语句查询指定字段的数据：</p>
-<pre><code class="language-sql">SELECT 字段名1, 字段名2, ... 
-FROM 表名 
-WHERE 条件1 AND 条件2;
+                <h1 id="SQL-查询及表关联知识笔记"><a href="#SQL-查询及表关联知识笔记" class="headerlink" title="SQL 查询及表关联知识笔记"></a>SQL 查询及表关联知识笔记</h1><h2 id="1-聚合查询"><a href="#1-聚合查询" class="headerlink" title="1. 聚合查询"></a>1. 聚合查询</h2><p>聚合查询用于对数据进行统计计算，常用的聚合函数有 <code>COUNT()</code>、<code>SUM()</code>、<code>AVG()</code>、<code>MAX()</code>、<code>MIN()</code> 等。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">AS</span> total_orders,  <span class="comment">-- 统计订单总数</span></span><br><span class="line">    <span class="built_in">SUM</span>(amount) <span class="keyword">AS</span> total_amount,  <span class="comment">-- 计算订单总金额</span></span><br><span class="line">    <span class="built_in">AVG</span>(amount) <span class="keyword">AS</span> avg_amount,  <span class="comment">-- 计算订单平均金额</span></span><br><span class="line">    <span class="built_in">MAX</span>(amount) <span class="keyword">AS</span> max_amount,  <span class="comment">-- 计算订单最大金额</span></span><br><span class="line">    <span class="built_in">MIN</span>(amount) <span class="keyword">AS</span> min_amount   <span class="comment">-- 计算订单最小金额</span></span><br><span class="line"><span class="keyword">FROM</span> orders;</span><br></pre></td></tr></table></figure>
+<h2 id="2-分组（GROUP-BY）"><a href="#2-分组（GROUP-BY）" class="headerlink" title="2.分组（GROUP BY）"></a>2.分组（GROUP BY）</h2><p>分组用于将查询结果按照一个或多个字段进行分组，通常与聚合函数一起使用。</p>
+<h3 id="示例：-1"><a href="#示例：-1" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    customer_id, </span><br><span class="line">    <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">AS</span> order_count, </span><br><span class="line">    <span class="built_in">SUM</span>(amount) <span class="keyword">AS</span> total_amount</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> customer_id;</span><br></pre></td></tr></table></figure>
+<p>以上查询可以查看每个客户的订单数量和订单总额。</p>
+<h2 id="3-子查询（Subquery）"><a href="#3-子查询（Subquery）" class="headerlink" title="3.子查询（Subquery）"></a>3.子查询（Subquery）</h2><p>子查询是嵌套在其他查询内部的查询，可以用于过滤、计算等场景。 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询订单金额高于所有订单平均金额的订单</span></span><br><span class="line"><span class="keyword">SELECT</span> order_id, amount</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">WHERE</span> amount <span class="operator">&gt;</span> (<span class="keyword">SELECT</span> <span class="built_in">AVG</span>(amount) <span class="keyword">FROM</span> orders);</span><br></pre></td></tr></table></figure>
 
-## 2. 模糊查询
-使用 LIKE 关键字进行模糊匹配：
-
-```sql
-SELECT * 
-FROM 表名 
-WHERE 字段名 LIKE &#39;%关键字%&#39;;
-示例：
-
-```sql
-SELECT * 
-FROM employees 
-WHERE name LIKE &#39;张%&#39;; -- 查找名字以“张”开头的员工
-## 3. 排序、分页、别名
-### 3.1 排序 (ORDER BY)
-按指定字段排序，默认升序 (ASC)，降序使用 DESC：
-
-```sql
-SELECT * 
-FROM employees 
-ORDER BY salary DESC; -- 按薪资降序排序
-### 3.2 分页 (LIMIT)
-使用 LIMIT 进行分页查询：
-
-```sql
-复制
-编辑
-SELECT * 
-FROM employees 
-LIMIT 10 OFFSET 20; -- 跳过前20条，查询接下来的10条记录
-### 3.3 字段别名 (AS)
-使用 AS 关键字为字段或表起别名：
-
-```sql
-复制
-编辑
-SELECT name AS 姓名, salary AS 工资 
-FROM employees;
-## 4. 聚合函数
-使用 SQL 聚合函数对数据进行统计计算：
-
-```sql
-SELECT 
-    COUNT(*) AS total_employees,  -- 统计员工总数
-    SUM(salary) AS sum_salary,    -- 计算薪资总和
-    AVG(salary) AS average_salary,-- 计算薪资平均值
-    MAX(salary) AS max_salary,    -- 计算最高薪资
-    MIN(salary) AS min_salary     -- 计算最低薪资
-FROM employees;
-</code></pre>
+<h2 id="4-表与表之间的关系及关联表"><a href="#4-表与表之间的关系及关联表" class="headerlink" title="4.表与表之间的关系及关联表"></a>4.表与表之间的关系及关联表</h2><p>在数据库中，表与表之间可能存在一对多、多对多等关系。<br>对于 多对多 的关系，通常使用关联表（中间表）来保存表与表之间的关系。</p>
+<h3 id="关联表示例："><a href="#关联表示例：" class="headerlink" title="关联表示例："></a>关联表示例：</h3><p>假设有 students 表和 courses 表，它们之间存在多对多关系，可以建立一个关联表 student_courses：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> student_courses (</span><br><span class="line">    student_id <span class="type">INT</span>,</span><br><span class="line">    course_id <span class="type">INT</span>,</span><br><span class="line">    <span class="keyword">PRIMARY KEY</span> (student_id, course_id),</span><br><span class="line">    <span class="keyword">FOREIGN KEY</span> (student_id) <span class="keyword">REFERENCES</span> students(student_id),</span><br><span class="line">    <span class="keyword">FOREIGN KEY</span> (course_id) <span class="keyword">REFERENCES</span> courses(course_id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="5-外键（Foreign-Key）"><a href="#5-外键（Foreign-Key）" class="headerlink" title="5.外键（Foreign Key）"></a>5.外键（Foreign Key）</h2><p>外键用于在一个表中引用另一个表的主键，以确保数据一致性和完整性。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> orders (</span><br><span class="line">    order_id <span class="type">INT</span> <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    customer_id <span class="type">INT</span>,</span><br><span class="line">    order_date <span class="type">DATE</span>,</span><br><span class="line">    <span class="keyword">FOREIGN KEY</span> (customer_id) <span class="keyword">REFERENCES</span> customers(customer_id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>上例中，customer_id 是 orders 表的外键，引用了 customers 表中的 customer_id 列。</p>
+<h2 id="6-连表查询（JOIN）"><a href="#6-连表查询（JOIN）" class="headerlink" title="6.连表查询（JOIN）"></a>6.连表查询（JOIN）</h2><p>连表查询用于从多个表中获取数据，常见的连接方式包括内连接（INNER JOIN）、左外连接（LEFT JOIN）、右外连接（RIGHT JOIN）和全外连接（FULL OUTER JOIN）。</p>
+<h3 id="6-1内接"><a href="#6-1内接" class="headerlink" title="6.1内接"></a>6.1内接</h3><p>返回两个表中匹配的记录：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    o.order_id, </span><br><span class="line">    o.amount, </span><br><span class="line">    c.customer_name</span><br><span class="line"><span class="keyword">FROM</span> orders o</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> customers c <span class="keyword">ON</span> o.customer_id <span class="operator">=</span> c.customer_id;</span><br></pre></td></tr></table></figure>
+<h3 id="左外连接"><a href="#左外连接" class="headerlink" title="左外连接"></a>左外连接</h3><p>返回左表的所有记录以及右表中匹配的记录，若右表没有匹配记录，则显示 NULL：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    o.order_id, </span><br><span class="line">    o.amount, </span><br><span class="line">    c.customer_name</span><br><span class="line"><span class="keyword">FROM</span> orders o</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> customers c <span class="keyword">ON</span> o.customer_id <span class="operator">=</span> c.customer_id;</span><br></pre></td></tr></table></figure>
+<h3 id="右外连接"><a href="#右外连接" class="headerlink" title="右外连接"></a>右外连接</h3><p>返回右表的所有记录以及左表中匹配的记录，若左表没有匹配记录，则显示 NULL：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    o.order_id, </span><br><span class="line">    o.amount, </span><br><span class="line">    c.customer_name</span><br><span class="line"><span class="keyword">FROM</span> orders o</span><br><span class="line"><span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> customers c <span class="keyword">ON</span> o.customer_id <span class="operator">=</span> c.customer_id;</span><br></pre></td></tr></table></figure>
+<h3 id="全外连接"><a href="#全外连接" class="headerlink" title="全外连接"></a>全外连接</h3><p>返回两个表中所有记录，匹配的部分显示数据，不匹配的部分显示 NULL。（注意：MySQL 不直接支持 FULL OUTER JOIN，可以使用 UNION 实现类似效果。）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    o.order_id, </span><br><span class="line">    o.amount, </span><br><span class="line">    c.customer_name</span><br><span class="line"><span class="keyword">FROM</span> orders o</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> customers c <span class="keyword">ON</span> o.customer_id <span class="operator">=</span> c.customer_id</span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    o.order_id, </span><br><span class="line">    o.amount, </span><br><span class="line">    c.customer_name</span><br><span class="line"><span class="keyword">FROM</span> orders o</span><br><span class="line"><span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> customers c <span class="keyword">ON</span> o.customer_id <span class="operator">=</span> c.customer_id;</span><br></pre></td></tr></table></figure>
 
                 
             </div>
@@ -544,7 +516,7 @@ FROM employees;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">SAN.</a>
+                    <a href="/about" rel="external nofollow noreferrer">San.</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -554,7 +526,7 @@ FROM employees;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://sansansan3333.github.io/2025/03/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%85%A8%E5%BF%B5%E4%B8%8EMySQL%E5%85%A5%E9%97%A8-%E7%AC%94%E8%AE%B02/">https://sansansan3333.github.io/2025/03/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%85%A8%E5%BF%B5%E4%B8%8EMySQL%E5%85%A5%E9%97%A8-%E7%AC%94%E8%AE%B02/</a>
+                    <a href="https://sansansan3333.github.io/2025/03/24/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%85%A8%E5%BF%B5%E4%B8%8EMySQL%E5%85%A5%E9%97%A8-%E7%AC%94%E8%AE%B03/">https://sansansan3333.github.io/2025/03/24/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%85%A8%E5%BF%B5%E4%B8%8EMySQL%E5%85%A5%E9%97%A8-%E7%AC%94%E8%AE%B03/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -567,7 +539,7 @@ FROM employees;
                     All articles in this blog are used except for special statements
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     reprint polocy. If reproduced, please indicate source
-                    <a href="/about" target="_blank">SAN.</a>
+                    <a href="/about" target="_blank">San.</a>
                     !
                 </span>
             </div>
@@ -591,7 +563,11 @@ FROM employees;
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/tags/MySQL/">
+                                    <span class="chip bg-color">MySQL</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -633,9 +609,10 @@ FROM employees;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2025/03/24/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%85%A8%E5%BF%B5%E4%B8%8EMySQL%E5%85%A5%E9%97%A8-%E7%AC%94%E8%AE%B03/">
                     <div class="card-image">
@@ -653,9 +630,9 @@ FROM employees;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-03-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -668,6 +645,7 @@ FROM employees;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -686,13 +664,13 @@ FROM employees;
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/03/21/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">
+                <a href="/2025/03/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%85%A8%E5%BF%B5%E4%B8%8EMySQL%E5%85%A5%E9%97%A8-%E7%AC%94%E8%AE%B02/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="关于网络编程的简单学习">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="数据库慨念与MySQL入门-笔记2">
                         
-                        <span class="card-title">关于网络编程的简单学习</span>
+                        <span class="card-title">数据库慨念与MySQL入门-笔记2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
