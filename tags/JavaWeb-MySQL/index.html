@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="学习，生活">
+    <meta name="keywords" content="Tag: JavaWeb,MySQL, 学习，生活">
     <meta name="description" content="san的个人博客，关于学习和生活">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>SAN~blog</title>
+    <title>Tag: JavaWeb,MySQL | SAN~blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -316,56 +316,9 @@
 
 </header>
 
-    
-<style>
-    .carousel-control {
-        width: 45px;
-        height: 45px;
-        line-height: 55px;
-        border-radius: 45px;
-        background: transparent;
-        cursor: pointer;
-        z-index: 100;
-    }
-
-    #prev-cover {
-        position: absolute;
-        top: 48%;
-        left: 8px;
-    }
-
-    #next-cover {
-        position: absolute;
-        top: 48%;
-        right: 8px;;
-    }
-
-    #prev-cover i {
-        margin-right: 3px;
-    }
-
-    #next-cover i {
-        margin-left: 3px;
-    }
-
-    .carousel-control:hover {
-        background-color: rgba(0, 0, 0, .4);
-    }
-
-    .carousel-control i {
-        color: #fff;
-        font-size: 2.4rem;
-    }
-</style>
-
-
-
-<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
-    
-
-    <div class="carousel-item red white-text bg-cover about-cover">
-        <div class="container">
-            <div class="row">
+    <div class="bg-cover pd-header about-cover">
+    <div class="container">
+    <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
         <div class="brand">
             <div class="title center-align">
@@ -389,268 +342,54 @@
 </script>
 
 
-
-            <div class="cover-btns">
-                <a href="#articles" class="waves-effect waves-light btn">
-                    <i class="fa fa-angle-double-down"></i>Start
-                </a>
-
-                
-                    <a href="https://github.com/sansansan3333" class="waves-effect waves-light btn" target="_blank">
-                        <i class="fab fa-github-alt"></i>Github
-                    </a>
-                
-            </div>
-            <div class="cover-social-link">
-    <a href="https://github.com/sansansan3333" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:544512461@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=544512461" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 544512461" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
-        </div>
     </div>
-
-    
 </div>
-
-<script>
-    $(function () {
-        let coverSlider = $('.carousel');
-
-        //用户触摸轮播自动 restartPlay 是否生效
-        let initUserPressedOrDraggedActive = false
-
-        //用户触摸轮播自动 restartPlay
-        function initUserPressedOrDragged(instance) {
-            setInterval(() => {
-                if (instance.pressed || instance.dragged) {
-                    // console.log('initUserPressedOrDragged: ',instance.pressed,instance.dragged)
-                    restartPlay()
-                }
-            }, 1000)
-        }
-
-        coverSlider.carousel({
-            duration: Number('120'),
-            fullWidth: true,
-            indicators: 'true' === 'true',
-            onCycleTo() {
-                if (!initUserPressedOrDraggedActive) {
-                    // console.log('initUserPressedOrDraggedActive')
-                    initUserPressedOrDragged(this)
-                    initUserPressedOrDraggedActive = true
-                }
-            },
-        })
-
-        let carouselIntervalId;
-        
-        // Loop to call the next cover article picture.
-        let autoCarousel = function () {
-            carouselIntervalId = setInterval(function () {
-                coverSlider.carousel('next');
-            }, 5000);
-        };
-        autoCarousel();
-        
-
-        function restartPlay() {
-            
-            clearInterval(carouselIntervalId);
-            autoCarousel();
-            
-        };
-
-        
-        // prev and next cover post.
-        $('#prev-cover').click(function () {
-            coverSlider.carousel('prev');
-            restartPlay();
-        });
-        $('#next-cover').click(function () {
-            coverSlider.carousel('next');
-            restartPlay();
-        });
-        
-    });
-</script>
-
-
 
 <main class="content">
 
     
 
+<div id="tags" class="container chip-container">
+    <div class="card">
+        <div class="card-content">
+            <div class="tag-title center-align">
+                <i class="fas fa-tags"></i>&nbsp;&nbsp;Post Tags
+            </div>
+            <div class="tag-chips">
+                
+                
+                <a href="/tags/JavaWeb/" title="JavaWeb: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="JavaWeb" style="background-color: #F9EBEA;">JavaWeb
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/JavaWeb-MySQL/" title="JavaWeb,MySQL: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            data-tagname="JavaWeb,MySQL" style="background-color: #F5EEF8;">JavaWeb,MySQL
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
     
 
-    <!-- 所有文章卡片 -->
     <article id="articles" class="container articles">
-        <div class="row article-row">
+        <div class="row tags-posts">
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2025/03/28/JavaWeb-Web%E5%9F%BA%E7%A1%80/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="JavaWeb-Web基础">
-                            
-                            <span class="card-title">JavaWeb-Web基础</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-28
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                SAN.
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2025/03/26/JavaWeb%E5%AD%A6%E4%B9%A0-%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="JavaWeb学习-前端">
-                            
-                            <span class="card-title">JavaWeb学习-前端</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                HTML, CSS, JavaScript 笔记本笔记涵盖了 HTML、CSS 和 JavaScript 的基础知识，帮助了解网页的构建要素及其相互关系。
-
-1. HTML 基础1.1 HTML 简介HTML（HyperText Marku
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-26
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Java%E5%BC%80%E5%8F%91%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    Java开发与测试学习
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/JavaWeb/">
-                            <span class="chip bg-color">JavaWeb</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2025/03/25/JavaWeb%E5%AD%A6%E4%B9%A0-web%E4%BA%A4%E4%BA%92%E4%B8%8E%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="JavaWeb学习-web交互与前后端分离思想">
-                            
-                            <span class="card-title">JavaWeb学习-web交互与前后端分离思想</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Web交互流程1. 概述Web交互流程描述了客户端（通常是浏览器）与服务器之间如何通过网络进行通信，从用户发起请求到服务器返回响应，并最终在浏览器中呈现结果的全过程。
-
-2. 主要流程步骤
-用户发起请求
-
-用户在浏览器中输入 URL 或点击
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-25
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Java%E5%BC%80%E5%8F%91%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    Java开发与测试学习
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/JavaWeb/">
-                            <span class="chip bg-color">JavaWeb</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4" data-tags="JavaWeb,MySQL" data-aos="fade-up">
                 <div class="card">
                     <a href="/2025/03/24/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%85%A8%E5%BF%B5%E4%B8%8EMySQL%E5%85%A5%E9%97%A8-%E7%AC%94%E8%AE%B03/">
-                        <div class="card-image">
+                        <div class="card-image tag-image">
                             
                             
                             <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="数据库慨念与MySQL入门-笔记3">
@@ -658,14 +397,7 @@
                             <span class="card-title">数据库慨念与MySQL入门-笔记3</span>
                         </div>
                     </a>
-
                     <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                SQL 查询及表关联知识笔记1. 聚合查询聚合查询用于对数据进行统计计算，常用的聚合函数有 COUNT()、SUM()、AVG()、MAX()、MIN() 等。
-示例：1234567SELECT     COUNT(*) AS total_
-                            
-                        </div>
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2025-03-24
@@ -675,30 +407,21 @@
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
                                 <a href="/categories/Java%E5%BC%80%E5%8F%91%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    Java开发与测试学习
+                                Java开发与测试学习
                                 </a>
                                 
                                 
                             </span>
                         </div>
                     </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/JavaWeb-MySQL/">
-                            <span class="chip bg-color">JavaWeb,MySQL</span>
-                        </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            
+            <div class="article tag-post col s12 m6 l4" data-tags="JavaWeb,MySQL" data-aos="fade-up">
                 <div class="card">
                     <a href="/2025/03/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%85%A8%E5%BF%B5%E4%B8%8EMySQL%E5%85%A5%E9%97%A8-%E7%AC%94%E8%AE%B02/">
-                        <div class="card-image">
+                        <div class="card-image tag-image">
                             
                             
                             <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="数据库慨念与MySQL入门-笔记2">
@@ -706,19 +429,7 @@
                             <span class="card-title">数据库慨念与MySQL入门-笔记2</span>
                         </div>
                     </a>
-
                     <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                SQL 基本查询操作1. 基本数据查询使用 SELECT 语句查询指定字段的数据：
-SELECT 字段名1, 字段名2, ... 
-FROM 表名 
-WHERE 条件1 AND 条件2;
-
-## 2. 模糊查询
-使用 LIKE 关键字进行模
-                            
-                        </div>
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2025-03-21
@@ -728,67 +439,21 @@ WHERE 条件1 AND 条件2;
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
                                 <a href="/categories/Java%E5%BC%80%E5%8F%91%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    Java开发与测试学习
+                                Java开发与测试学习
                                 </a>
                                 
                                 
                             </span>
                         </div>
                     </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/JavaWeb-MySQL/">
-                            <span class="chip bg-color">JavaWeb,MySQL</span>
-                        </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2025/03/21/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="关于网络编程的简单学习">
-                            
-                            <span class="card-title">关于网络编程的简单学习</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-21
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Java%E5%BC%80%E5%8F%91%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    Java开发与测试学习
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4" data-tags="JavaWeb,MySQL" data-aos="fade-up">
                 <div class="card">
                     <a href="/2025/03/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E5%BF%B5%E4%B8%8EMySQL%E5%85%A5%E9%97%A8-%E7%AC%94%E8%AE%B01/">
-                        <div class="card-image">
+                        <div class="card-image tag-image">
                             
                             
                             <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="数据库慨念与MySQL入门-笔记1">
@@ -796,18 +461,7 @@ WHERE 条件1 AND 条件2;
                             <span class="card-title">数据库慨念与MySQL入门-笔记1</span>
                         </div>
                     </a>
-
                     <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                数据库常见概念1. 数据库基础概念
-数据库（Database）一个存储数据的仓库，可以包含多个表，用于组织和管理大量结构化数据。
-
-表（Table）数据库中的一种数据结构，由行和列组成，用于存储特定类型的数据（如用户表、订单表）。
-
-列名（
-                            
-                        </div>
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2025-03-20
@@ -817,29 +471,18 @@ WHERE 条件1 AND 条件2;
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
                                 <a href="/categories/Java%E5%BC%80%E5%8F%91%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    Java开发与测试学习
+                                Java开发与测试学习
                                 </a>
                                 
                                 
                             </span>
                         </div>
                     </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/JavaWeb-MySQL/">
-                            <span class="chip bg-color">JavaWeb,MySQL</span>
-                        </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
             
         </div>
     </article>
-
 </main>
 
 
