@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Mybatis学习 - 1 快速入门, 学习，生活">
+    <meta name="keywords" content="redis-1（业务到工具）, 学习，生活">
     <meta name="description" content="san的个人博客，关于学习和生活">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Mybatis学习 - 1 快速入门 | SAN~blog</title>
+    <title>redis-1（业务到工具） | SAN~blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Mybatis学习 - 1 快速入门</h1>
+                    <h1 class="description center-align post-title">redis-1（业务到工具）</h1>
                 </div>
             </div>
         </div>
@@ -453,7 +453,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2025-04-08
+                    2025-04-14
                 </div>
                 
 
@@ -474,41 +474,78 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>在resources目录下创建配置文件mybatis-config.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">configuration</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;https://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://localhost:3306/userdb&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;mapper/UserMapper.xml&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+                <h1 id="Redis相关知识"><a href="#Redis相关知识" class="headerlink" title="Redis相关知识"></a>Redis相关知识</h1><p> 从技术派基于redis实现用户活跃度排行榜的业务需求与技术实现，学习redis</p>
+<h2 id="基础认识"><a href="#基础认识" class="headerlink" title="基础认识"></a>基础认识</h2><p>Redis（全称为Remote Dictionary Server）是一个开源的高性能键值对存储系统，具有快速、灵活和可扩展的特性。它是一个基于内存的数据结构存储系统，可以用作数据库、缓存和消息代理。</p>
+<h3 id="Redis-的一些主要特点和用途："><a href="#Redis-的一些主要特点和用途：" class="headerlink" title="Redis 的一些主要特点和用途："></a>Redis 的一些主要特点和用途：</h3><ol>
+<li><strong>高性能</strong>：Redis 数据存储在内存中，因此能够提供极快的读写操作。它采用单线程模型和异步 I&#x2F;O，避免了多线程的竞争和阻塞，从而达到了非常高的性能。</li>
+<li><strong>数据结构多样</strong>：Redis 支持多种数据结构，包括字符串（String）、哈希（Hash）、列表（List）、集合（Set）和有序集合（Sorted Set）。这些数据结构提供了丰富的操作命令，使得开发者可以方便地处理各种数据需求。</li>
+<li><strong>持久化支持</strong>：Redis 提供了两种持久化方式，即快照（Snapshotting）和日志追加（Append-only file，AOF）。快照方式将 Redis 内存数据以二进制格式写入磁盘，而 AOF 则通过追加记录 Redis 的操作命令来实现持久化。</li>
+<li><strong>发布&#x2F;订阅</strong>：Redis 支持发布&#x2F;订阅模式，可以用作消息代理。发布者将消息发送到指定的频道，订阅者则可以接收和处理这些消息。这种模式在构建实时通信、事件驱动系统和消息队列等场景中非常有用。</li>
+<li><strong>分布式缓存</strong>：Redis可以通过主从复制和分片来实现数据的分布式存储和高可用性。主从复制可以将数据复制到多个从节点，实现读写分离和数据备份。而分片则可以将数据分布在多个Redis节点上，实现横向扩展和负载均衡。</li>
+<li><strong>事务支持</strong>：Redis 支持事务，开发者可以将多个操作组合成一个原子性的操作序列，保证这些操作要么全部执行成功，要么全部不执行。</li>
+<li><strong>功能丰富</strong>：Redis不仅仅是一个简单的缓存，它还提供了许多其他功能，如事务支持、Lua脚本执行、定时任务、原子操作等。这使得开发者可以在Redis中实现更复杂的应用逻辑。</li>
+</ol>
+<p>Redis 是一个功能丰富的存储系统，适用于多种场景，包括缓存、会话存储、排行榜、实时分析等。它有广泛的应用，并且拥有活跃的社区支持。</p>
+<h3 id="Redis-与其他-key-value-存储有什么不同？"><a href="#Redis-与其他-key-value-存储有什么不同？" class="headerlink" title="Redis 与其他 key-value 存储有什么不同？"></a>Redis 与其他 key-value 存储有什么不同？</h3><p>Redis 比起其它键值类数据库，值可以包含更复杂的数据类型，并且在数据类型上定义原子操作。Redis 数据类型与基本数据结构密切相关，并直接向程序员公开，无需额外的抽象层。<br>Redis 运行在内存中但是可以持久化到磁盘，因此它代表了一种不同的权衡，即在数据集不能大于内存的限制下实现非常高的写入和读取速度。内存数据库的另一个优点是，与磁盘上的相同数据结构相比，复杂数据结构的内存表示更易于操作，因此 Redis 可以做很多事情而内部复杂性很小。同时，因 RDB 和 AOF 两种磁盘持久化方式是不适合随机访问，因为它们是顺序写入的。<br>Redis 架构<br>Redis 主要由有两个程序组成：</p>
+<p>Redis 客户端 redis-cli<br>Redis 服务器 redis-server<br>客户端、服务器可以位于同一台计算机或两台不同的计算机中</p>
+<h2 id="Redis-ZSET-Sorted-Set-详解"><a href="#Redis-ZSET-Sorted-Set-详解" class="headerlink" title="Redis ZSET (Sorted Set) 详解"></a>Redis ZSET (Sorted Set) 详解</h2><h3 id="核心特性"><a href="#核心特性" class="headerlink" title="核心特性"></a>核心特性</h3><ol>
+<li><p><strong>成员唯一性</strong></p>
+<ul>
+<li>每个元素（成员）唯一，但对应的 <code>score</code> 可以重复</li>
+<li>示例：<code>ZADD myzset 100 &quot;Alice&quot; 95 &quot;Bob&quot; 100 &quot;Charlie&quot;</code></li>
+</ul>
+</li>
+<li><p><strong>自动按分数排序</strong></p>
+<ul>
+<li>默认按 <code>score</code> 升序排列</li>
+<li>支持 <code>REV</code> 参数实现降序（如 <code>ZREVRANGE</code>）</li>
+</ul>
+</li>
+<li><p><strong>高性能操作</strong></p>
+<ul>
+<li>时间复杂度：O(log N)（基于跳跃表实现）</li>
+</ul>
+</li>
+</ol>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><h4 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ZADD key score member</code></td>
+<td>添加成员</td>
+<td><code>ZADD leaderboard 100 &quot;Alice&quot;</code></td>
+</tr>
+<tr>
+<td><code>ZRANGE key start stop</code></td>
+<td>升序获取成员</td>
+<td><code>ZRANGE leaderboard 0 -1 WITHSCORES</code></td>
+</tr>
+<tr>
+<td><code>ZREVRANGE</code></td>
+<td>降序获取成员</td>
+<td><code>ZREVRANGE leaderboard 0 2</code></td>
+</tr>
+<tr>
+<td><code>ZRANK key member</code></td>
+<td>获取升序排名</td>
+<td><code>ZRANK leaderboard &quot;Alice&quot;</code></td>
+</tr>
+<tr>
+<td><code>ZSCORE key member</code></td>
+<td>获取成员分数</td>
+<td><code>ZSCORE leaderboard &quot;Alice&quot;</code></td>
+</tr>
+</tbody></table>
+<h4 id="高级操作"><a href="#高级操作" class="headerlink" title="高级操作"></a>高级操作</h4><pre><code class="language-bash">ZINCRBY key increment member  # 增加分数
+ZCOUNT key min max           # 统计分数范围内的成员
+ZUNIONSTORE dest numkeys key...  # 并集运算
+</code></pre>
 
-
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>每个基于 MyBatis 的应用都是以一个 SqlSessionFactory 的实例为核心的。SqlSessionFactory 的实例可以通过 SqlSessionFactoryBuilder 获得。而 SqlSessionFactoryBuilder 则可以从 XML 配置文件或一个预先配置的 Configuration 实例来构建出 SqlSessionFactory 实例。</p>
-<p>SqlSessionFactory 中获取 SqlSession<br>使用和指定语句的参数和返回值相匹配的接口（比如 BlogMapper.class），现在你的代码不仅更清晰，更加类型安全，还不用担心可能出错的字符串字面值以及强制类型转换。</p>
-<h4 id="如何与数据库交互"><a href="#如何与数据库交互" class="headerlink" title="如何与数据库交互"></a>如何与数据库交互</h4><p>通常与每张表交互都会创建一个对应的接口</p>
-<p>创建接口-要有实现类和实现方法</p>
-<p>以前sql语句用于与数据库进行交互-》实现sql语句</p>
-<p>SQL 语句映射是个相当广泛的话题，可能会占去文档的大部分篇幅。 但为了让你能够了解个大概，这里先给出几个例子。</p>
-<p>一个语句既可以通过 XML 定义，也可以通过注解定义。我们先看看 XML 定义语句的方式，事实上 MyBatis 提供的所有特性都可以利用基于 XML 的映射语言来实现，这使得 MyBatis 在过去的数年间得以流行。如果你用过旧版本的 MyBatis，你应该对这个概念比较熟悉。 但相比于之前的版本，新版本改进了许多 XML 的配置，后面我们会提到这些改进。这里给出一个基于 XML 映射语句的示例，它应该可以满足上个示例中 SqlSession 的调用</p>
-<p>映射接口-&gt;实现-&gt;基于XML的映射语言</p>
-<p>XML文件的写法</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">  <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">  <span class="string">&quot;https://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;org.mybatis.example.BlogMapper&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectBlog&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;Blog&quot;</span>&gt;</span></span><br><span class="line">    select * from Blog where id = #&#123;id&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>定义好接口，xml映射语句后，程序还不能运行，需要更新配置，让mybatis知道对应映射</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span> = <span class="string">&quot;path.xml&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>映射中sql语句获取参数，例如接口里</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">User getbyID(Integer id)</span><br><span class="line"></span><br><span class="line">xml映射</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">resource</span> = <span class="string">&quot;path.xml&quot;</span>&gt;</span></span><br><span class="line">    select name,age from user where id  = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>结果处理：</p>
-<p>如果sql语句是role_ID，而java中对应属性是 roleId———如何搜索</p>
-<p>1.修改java语句</p>
-<p>2.添加映射</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">利用resultmap处理映射</span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;usermap&quot;</span> <span class="attr">type</span>=<span class="string">&quot;com.sansan.data.User&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;role_id&quot;</span> <span class="attr">property</span>=<span class="string">&quot;roleid&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;list1&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;map&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p>获取主键值</p>
-<p>抽取公共字段</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">利用sql语句</span><br><span class="line"><span class="tag">&lt;<span class="name">sql</span> <span class="attr">id</span> = <span class="string">&quot;baseColum&quot;</span>&gt;</span></span><br><span class="line"> name,age,password</span><br><span class="line"><span class="tag">&lt;/<span class="name">sql</span>&gt;</span></span><br><span class="line"></span><br><span class="line">引用时</span><br><span class="line"><span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span> = <span class="string">&quot;baseColum&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="对命名空间的一点补充"><a href="#对命名空间的一点补充" class="headerlink" title="对命名空间的一点补充"></a>对命名空间的一点补充</h5><p>之前版本的 MyBatis 中，命名空间（Namespaces） 的作用并不大，是可选的。 但现在，随着命名空间越发重要，必须指定命名空间。</p>
-<p>命名空间的作用有两个，一个是利用更长的全限定名来将不同的语句隔离开来，同时也实现了你上面见到的接口绑定。就算你觉得暂时用不到接口绑定，你也应该遵循这里的规定，以防哪天你改变了主意。 长远来看，只要将命名空间置于合适的 Java 包命名空间之中，你的代码会变得更加整洁，也有利于你更方便地使用 MyBatis。</p>
-<p>命名解析： 为了减少输入量，MyBatis 对所有具有名称的配置元素（包括语句，结果映射，缓存等）使用了如下的命名解析规则。</p>
-<p>全限定名（比如 “com.mypackage.MyMapper.selectAllThings）将被直接用于查找及使用。<br>短名称（比如 “selectAllThings”）如果全局唯一也可以作为一个单独的引用。 如果不唯一，有两个或两个以上的相同名称（比如 “com.foo.selectAllThings” 和 “com.bar.selectAllThings”），那么使用时就会产生“短名称不唯一”的错误，这种情况下就必须使用全限定名。</p>
-<h4 id="Mybatis-x插件"><a href="#Mybatis-x插件" class="headerlink" title="Mybatis-x插件"></a>Mybatis-x插件</h4>
                 
             </div>
             <hr/>
@@ -534,7 +571,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://sansansan3333.github.io/2025/04/08/Mybatis%E5%AD%A6%E4%B9%A0-1/">https://sansansan3333.github.io/2025/04/08/Mybatis%E5%AD%A6%E4%B9%A0-1/</a>
+                    <a href="https://sansansan3333.github.io/2025/04/14/redis-1/">https://sansansan3333.github.io/2025/04/14/redis-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -613,54 +650,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2025/04/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3-debug/">
+                <a href="/2025/04/14/redis-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="数据库相关-debug">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="redis-1（业务到工具）">
                         
-                        <span class="card-title">数据库相关-debug</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-04-08
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            SAN.
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2025/04/07/Web-Cookie%E4%B8%8Esession/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Web-Cookie与session">
-                        
-                        <span class="card-title">Web-Cookie与session</span>
+                        <span class="card-title">redis-1（业务到工具）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -671,7 +672,45 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-04-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-04-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            SAN.
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025/04/10/Mybatis%E5%AD%A6%E4%B9%A0-3/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Mybatis学习-3 参数处理与动态sql">
+                        
+                        <span class="card-title">Mybatis学习-3 参数处理与动态sql</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-04-10
                             </span>
                         <span class="publish-author">
                             
@@ -684,8 +723,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaWen/">
-                        <span class="chip bg-color">JavaWen</span>
+                    <a href="/tags/Mybatis/">
+                        <span class="chip bg-color">Mybatis</span>
                     </a>
                     
                 </div>
