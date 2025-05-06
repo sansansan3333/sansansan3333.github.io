@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据库相关-debug, 学习，生活">
+    <meta name="keywords" content="Spring-SpringFrameWork, 学习，生活">
     <meta name="description" content="san的个人博客，关于学习和生活">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>数据库相关-debug | SAN~blog</title>
+    <title>Spring-SpringFrameWork | SAN~blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据库相关-debug</h1>
+                    <h1 class="description center-align post-title">Spring-SpringFrameWork</h1>
                 </div>
             </div>
         </div>
@@ -439,13 +439,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                <span class="chip bg-color">数据库</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -453,8 +449,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Debug/" class="post-category">
-                                Debug
+                            <a href="/categories/Spring/" class="post-category">
+                                Spring
                             </a>
                         
                     </div>
@@ -466,7 +462,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2025-04-08
+                    2025-04-24
                 </div>
                 
 
@@ -487,10 +483,121 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="lombok版本不兼容"><a href="#lombok版本不兼容" class="headerlink" title="lombok版本不兼容"></a>lombok版本不兼容</h2><p>出现：java: java.lang.NoSuchFieldError: Class com.sun.tools.javac.tree.JCTree$JCImport does not have member field ‘com.sun.tools.javac.tree.JCTree qualid’</p>
-<p>通常为版本不兼容</p>
-<p>查看跟jdk,兼容的版本，更新依赖</p>
-<h2 id="Unknown-Column"><a href="#Unknown-Column" class="headerlink" title="Unknown Column"></a>Unknown Column</h2><p>表里没有这一列<br>去除映射中的查询，或者是否缺失？</p>
+                <h1 id="Spring-Framework-依赖注入-DI-笔记"><a href="#Spring-Framework-依赖注入-DI-笔记" class="headerlink" title="Spring Framework &amp; 依赖注入 (DI) 笔记"></a>Spring Framework &amp; 依赖注入 (DI) 笔记</h1><h2 id="1-Spring-Framework-概述"><a href="#1-Spring-Framework-概述" class="headerlink" title="1. Spring Framework 概述"></a>1. Spring Framework 概述</h2><ul>
+<li>Spring 的核心是一个 <strong>IoC 容器</strong>（控制反转容器），负责管理 Bean 的生命周期与依赖。</li>
+<li><strong>MyBatis</strong>：可通过 XML 或 Java 类配置与 Spring 集成。</li>
+<li><strong>配置方式</strong>：支持 <strong>注解</strong>、<strong>JavaConfig</strong>、<strong>XML</strong> 三种方式。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@MapperScan(&quot;com.example.mapper&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyBatisConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> DataSource <span class="title function_">dataSource</span><span class="params">()</span> &#123; ... &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> SqlSessionFactory <span class="title function_">sqlSessionFactory</span><span class="params">(DataSource ds)</span> &#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="2-IoC-Inversion-of-Control-与-DI-Dependency-Injection"><a href="#2-IoC-Inversion-of-Control-与-DI-Dependency-Injection" class="headerlink" title="2. IoC (Inversion of Control) 与 DI (Dependency Injection)"></a>2. IoC (Inversion of Control) 与 DI (Dependency Injection)</h2><h3 id="2-1-IoC（控制反转）"><a href="#2-1-IoC（控制反转）" class="headerlink" title="2.1 IoC（控制反转）"></a>2.1 IoC（控制反转）</h3><ul>
+<li>控制权由程序主动获取变为由容器负责：对象的创建、配置、管理交由 Spring 容器。</li>
+</ul>
+<h3 id="2-2-DI（依赖注入）"><a href="#2-2-DI（依赖注入）" class="headerlink" title="2.2 DI（依赖注入）"></a>2.2 DI（依赖注入）</h3><ul>
+<li><strong>定义</strong>：将对象所依赖的其他对象，在运行时由容器注入进来，降低耦合。</li>
+<li><strong>原理</strong>：若 <code>ObjectA</code> 需要 <code>ObjectB</code> 与 <code>ObjectC</code>，则称 A 依赖于 B、C。</li>
+<li><strong>DI 是 IoC 的一种实现方式</strong>。</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ObjectA --&gt; ObjectB, ObjectC  (A 依赖 B、C，注入由容器完成)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="3-注入方式"><a href="#3-注入方式" class="headerlink" title="3. 注入方式"></a>3. 注入方式</h2><h3 id="3-1-构造器注入"><a href="#3-1-构造器注入" class="headerlink" title="3.1 构造器注入"></a>3.1 构造器注入</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> UserRepository repo;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UserService</span><span class="params">(UserRepository repo)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.repo = repo;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-Setter-注入"><a href="#3-2-Setter-注入" class="headerlink" title="3.2 Setter 注入"></a>3.2 Setter 注入</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OrderService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> PaymentService paymentService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPaymentService</span><span class="params">(PaymentService paymentService)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.paymentService = paymentService;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-字段注入"><a href="#3-3-字段注入" class="headerlink" title="3.3 字段注入"></a>3.3 字段注入</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NotificationService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> EmailSender emailSender;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="4-常用注解介绍"><a href="#4-常用注解介绍" class="headerlink" title="4. 常用注解介绍"></a>4. 常用注解介绍</h2><table>
+<thead>
+<tr>
+<th>注解</th>
+<th>来源</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@Component</code></td>
+<td>Spring</td>
+<td>将类注册为 Bean</td>
+</tr>
+<tr>
+<td><code>@Service</code></td>
+<td>Spring</td>
+<td>标注业务层 Bean</td>
+</tr>
+<tr>
+<td><code>@Repository</code></td>
+<td>Spring</td>
+<td>标注数据访问层 Bean</td>
+</tr>
+<tr>
+<td><code>@Controller</code></td>
+<td>Spring MVC</td>
+<td>标注控制器层 Bean</td>
+</tr>
+<tr>
+<td><code>@Autowired</code></td>
+<td>Spring</td>
+<td>按类型自动注入 Bean</td>
+</tr>
+<tr>
+<td><code>@Qualifier</code></td>
+<td>Spring</td>
+<td>与 <code>@Autowired</code> 配合，按名称或限定符注入</td>
+</tr>
+<tr>
+<td><code>@Resource</code></td>
+<td>JSR-250</td>
+<td>按名称注入 Bean</td>
+</tr>
+<tr>
+<td><code>@Inject</code></td>
+<td>JSR-330</td>
+<td>类似 <code>@Autowired</code></td>
+</tr>
+<tr>
+<td><code>@Value</code></td>
+<td>Spring</td>
+<td>注入基本类型或字符串</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Value(&quot;提莫&quot;)</span><br><span class="line">private String name;</span><br><span class="line">@Value(&quot;18&quot;)</span><br><span class="line">private Integer age;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="5-Bean-作用域-Scope"><a href="#5-Bean-作用域-Scope" class="headerlink" title="5. Bean 作用域 (Scope)"></a>5. Bean 作用域 (Scope)</h2><ul>
+<li><code>singleton</code>（默认）：单例 Bean。</li>
+<li><code>prototype</code>：多例，每次注入或请求都会创建新实例。</li>
+<li><code>request</code>：每次 HTTP 请求一个实例（Web 环境）。</li>
+<li><code>session</code>：每个 HTTP Session 一个实例（Web 环境）。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Scope(&quot;prototype&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TaskProcessor</span> &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="6-循环依赖处理"><a href="#6-循环依赖处理" class="headerlink" title="6. 循环依赖处理"></a>6. 循环依赖处理</h2><ul>
+<li><strong>构造器注入</strong>：无法解决循环依赖。</li>
+<li><strong>Setter&#x2F;字段注入</strong>：Spring 通过三级缓存可解决单例 Bean 的循环依赖。</li>
+</ul>
+<hr>
+<h2 id="7-面向接口编程"><a href="#7-面向接口编程" class="headerlink" title="7. 面向接口编程"></a>7. 面向接口编程</h2><ul>
+<li><strong>原则</strong>：针对接口编程，而不是针对实现编程。</li>
+<li><strong>实现方式</strong>：定义接口，多个实现类；通过 DI 将具体实现注入到接口引用。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">PaymentService</span> &#123; <span class="keyword">void</span> <span class="title function_">pay</span><span class="params">(...)</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PaypalPaymentService</span> <span class="keyword">implements</span> <span class="title class_">PaymentService</span> &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CheckoutController</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> PaymentService paymentService;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">CheckoutController</span><span class="params">(PaymentService paymentService)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.paymentService = paymentService;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="8-小结"><a href="#8-小结" class="headerlink" title="8. 小结"></a>8. 小结</h2><ul>
+<li>Spring 的核心是 <strong>IoC 容器</strong> + <strong>DI 机制</strong>。</li>
+<li>推荐使用 <strong>构造器注入</strong>，配合注解与 JavaConfig。</li>
+<li>了解常用注解与作用域，有助于编写清晰、可维护的 Spring 应用。</li>
+</ul>
+<p><strong>参考资料</strong>：</p>
+<ul>
+<li>Spring 官方文档</li>
+<li>《Spring in Action》</li>
+<li>Baeldung: <a target="_blank" rel="noopener" href="https://www.baeldung.com/spring-dependency-injection">https://www.baeldung.com/spring-dependency-injection</a></li>
+</ul>
 
                 
             </div>
@@ -517,7 +624,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://sansansan3333.github.io/2025/04/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3-debug/">https://sansansan3333.github.io/2025/04/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3-debug/</a>
+                    <a href="https://sansansan3333.github.io/2025/04/24/Spring-SpringFrameWork/">https://sansansan3333.github.io/2025/04/24/Spring-SpringFrameWork/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -554,11 +661,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                    <span class="chip bg-color">数据库</span>
-                                </a>
-                            
+                            <span class="chip bg-color">No tag</span>
                         </div>
                     
                 </div>
@@ -604,13 +707,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2025/04/08/%E6%8A%80%E6%9C%AF%E6%B4%BE%E9%A1%B9%E7%9B%AE/">
+                <a href="/2025/04/24/Spring%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="技术派项目--业务构建思考（基于redis实现的活跃度排行）">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Spring依赖注入">
                         
-                        <span class="card-title">技术派项目--业务构建思考（基于redis实现的活跃度排行）</span>
+                        <span class="card-title">Spring依赖注入</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -621,14 +724,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-04-08
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-04-24
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Project/" class="post-category">
-                                    Project
+                            <a href="/categories/Spring/" class="post-category">
+                                    Spring
                                 </a>
                             
                             
@@ -638,8 +741,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PaiCoding-%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0/">
-                        <span class="chip bg-color">PaiCoding,模块实现</span>
+                    <a href="/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
                     </a>
                     
                 </div>
@@ -653,13 +756,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/04/08/Mybatis%E5%AD%A6%E4%B9%A0-1/">
+                <a href="/2025/04/24/Spring-AOP/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Mybatis学习 - 1 快速入门">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Spring - AOP">
                         
-                        <span class="card-title">Mybatis学习 - 1 快速入门</span>
+                        <span class="card-title">Spring - AOP</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -670,12 +773,16 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-04-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-04-24
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            SAN.
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Spring/" class="post-category">
+                                    Spring
+                                </a>
+                            
                             
                         </span>
                     </div>

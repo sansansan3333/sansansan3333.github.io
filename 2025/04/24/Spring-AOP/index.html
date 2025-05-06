@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据库相关-debug, 学习，生活">
+    <meta name="keywords" content="Spring - AOP, 学习，生活">
     <meta name="description" content="san的个人博客，关于学习和生活">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>数据库相关-debug | SAN~blog</title>
+    <title>Spring - AOP | SAN~blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据库相关-debug</h1>
+                    <h1 class="description center-align post-title">Spring - AOP</h1>
                 </div>
             </div>
         </div>
@@ -439,13 +439,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                <span class="chip bg-color">数据库</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -453,8 +449,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Debug/" class="post-category">
-                                Debug
+                            <a href="/categories/Spring/" class="post-category">
+                                Spring
                             </a>
                         
                     </div>
@@ -466,7 +462,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2025-04-08
+                    2025-04-24
                 </div>
                 
 
@@ -487,10 +483,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="lombok版本不兼容"><a href="#lombok版本不兼容" class="headerlink" title="lombok版本不兼容"></a>lombok版本不兼容</h2><p>出现：java: java.lang.NoSuchFieldError: Class com.sun.tools.javac.tree.JCTree$JCImport does not have member field ‘com.sun.tools.javac.tree.JCTree qualid’</p>
-<p>通常为版本不兼容</p>
-<p>查看跟jdk,兼容的版本，更新依赖</p>
-<h2 id="Unknown-Column"><a href="#Unknown-Column" class="headerlink" title="Unknown Column"></a>Unknown Column</h2><p>表里没有这一列<br>去除映射中的查询，或者是否缺失？</p>
+                <p>Spring切面的文档地址<br>Spring AOP（面向切面编程）功能依赖于代理模式。<br>1.为什么进行切面操作<br>2.如何进行切面<br>定义切面逻辑</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.ProceedingJoinPoint;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.annotation.*;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AuthAspect</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 你要对谁进行切面处理？</span></span><br><span class="line">    <span class="meta">@Pointcut(&quot;bean(studentDemo)&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">pointCut</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 你要进行什么增强</span></span><br><span class="line">    <span class="meta">@Before(&quot;pointCut()&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doLog</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;doBefore&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After(&quot;pointCut()&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doAfter</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;doAfter&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterReturning(&quot;pointCut()&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doAfterReturning</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;doAfterReturning&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterThrowing(&quot;pointCut()&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doAfterThrowing</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;doAfterThrowing&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Around(&quot;pointCut()&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">doAround</span><span class="params">(ProceedingJoinPoint joinPoint)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;doAround before&quot;</span>);</span><br><span class="line">        <span class="type">Object</span> <span class="variable">obj</span> <span class="operator">=</span> joinPoint.proceed();</span><br><span class="line">        System.out.println(<span class="string">&quot;doAround after&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>上述是几种通知<br><strong>注解</strong> 分别是针对切面的位置定义</p>
+<p>特殊的通知–环绕通知<br>可前可后，前后都通知故<br>3.定义切点的表达式<br>@pointCut(“bean(name)”)——-指定对容器对象名进行切面操作，为什么这么写</p>
+<hr>
+<p><strong>AOP术语</strong></p>
 
                 
             </div>
@@ -517,7 +515,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://sansansan3333.github.io/2025/04/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3-debug/">https://sansansan3333.github.io/2025/04/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3-debug/</a>
+                    <a href="https://sansansan3333.github.io/2025/04/24/Spring-AOP/">https://sansansan3333.github.io/2025/04/24/Spring-AOP/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -554,11 +552,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                    <span class="chip bg-color">数据库</span>
-                                </a>
-                            
+                            <span class="chip bg-color">No tag</span>
                         </div>
                     
                 </div>
@@ -604,13 +598,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2025/04/08/%E6%8A%80%E6%9C%AF%E6%B4%BE%E9%A1%B9%E7%9B%AE/">
+                <a href="/2025/04/24/Spring-SpringFrameWork/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="技术派项目--业务构建思考（基于redis实现的活跃度排行）">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Spring-SpringFrameWork">
                         
-                        <span class="card-title">技术派项目--业务构建思考（基于redis实现的活跃度排行）</span>
+                        <span class="card-title">Spring-SpringFrameWork</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -621,27 +615,19 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-04-08
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-04-24
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Project/" class="post-category">
-                                    Project
+                            <a href="/categories/Spring/" class="post-category">
+                                    Spring
                                 </a>
                             
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/PaiCoding-%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0/">
-                        <span class="chip bg-color">PaiCoding,模块实现</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -653,13 +639,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/04/08/Mybatis%E5%AD%A6%E4%B9%A0-1/">
+                <a href="/2025/04/14/redis-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Mybatis学习 - 1 快速入门">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="redis-1（业务到工具）">
                         
-                        <span class="card-title">Mybatis学习 - 1 快速入门</span>
+                        <span class="card-title">redis-1（业务到工具）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -670,7 +656,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-04-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-04-14
                             </span>
                         <span class="publish-author">
                             

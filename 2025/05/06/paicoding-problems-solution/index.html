@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据库相关-debug, 学习，生活">
+    <meta name="keywords" content="paicoding_problems_solution, 学习，生活">
     <meta name="description" content="san的个人博客，关于学习和生活">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>数据库相关-debug | SAN~blog</title>
+    <title>paicoding_problems_solution | SAN~blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据库相关-debug</h1>
+                    <h1 class="description center-align post-title">paicoding_problems_solution</h1>
                 </div>
             </div>
         </div>
@@ -441,8 +441,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                <span class="chip bg-color">数据库</span>
+                            <a href="/tags/PaiCoding-redis-%E9%80%9A%E4%BF%A1/">
+                                <span class="chip bg-color">PaiCoding,redis,通信</span>
                             </a>
                         
                     </div>
@@ -453,8 +453,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Debug/" class="post-category">
-                                Debug
+                            <a href="/categories/Project-Debug/" class="post-category">
+                                Project,Debug
                             </a>
                         
                     </div>
@@ -466,7 +466,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2025-04-08
+                    2025-05-06
                 </div>
                 
 
@@ -487,10 +487,133 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="lombok版本不兼容"><a href="#lombok版本不兼容" class="headerlink" title="lombok版本不兼容"></a>lombok版本不兼容</h2><p>出现：java: java.lang.NoSuchFieldError: Class com.sun.tools.javac.tree.JCTree$JCImport does not have member field ‘com.sun.tools.javac.tree.JCTree qualid’</p>
-<p>通常为版本不兼容</p>
-<p>查看跟jdk,兼容的版本，更新依赖</p>
-<h2 id="Unknown-Column"><a href="#Unknown-Column" class="headerlink" title="Unknown Column"></a>Unknown Column</h2><p>表里没有这一列<br>去除映射中的查询，或者是否缺失？</p>
+                <h2 id="下面是基于我遇到的-Redis-WSL2-问题，结合计算机网络、操作系统、编程语言等方面的基础知识进行的总结。"><a href="#下面是基于我遇到的-Redis-WSL2-问题，结合计算机网络、操作系统、编程语言等方面的基础知识进行的总结。" class="headerlink" title="下面是基于我遇到的 Redis + WSL2 问题，结合计算机网络、操作系统、编程语言等方面的基础知识进行的总结。"></a>下面是基于我遇到的 Redis + WSL2 问题，结合计算机网络、操作系统、编程语言等方面的基础知识进行的总结。</h2><h1 id="Windows-WSL2-访问-Redis-问题及基础知识总结"><a href="#Windows-WSL2-访问-Redis-问题及基础知识总结" class="headerlink" title="Windows + WSL2 访问 Redis 问题及基础知识总结"></a>Windows + WSL2 访问 Redis 问题及基础知识总结</h1><hr>
+<h2 id="✅-遇到的典型问题总结"><a href="#✅-遇到的典型问题总结" class="headerlink" title="✅ 遇到的典型问题总结"></a>✅ 遇到的典型问题总结</h2><hr>
+<h3 id="🧩-问题-1：Windows-无法访问-WSL2-中的-Redis-Test-NetConnection-显示连接失败"><a href="#🧩-问题-1：Windows-无法访问-WSL2-中的-Redis-Test-NetConnection-显示连接失败" class="headerlink" title="🧩 问题 1：Windows 无法访问 WSL2 中的 Redis (Test-NetConnection 显示连接失败)"></a>🧩 问题 1：Windows 无法访问 WSL2 中的 Redis (<code>Test-NetConnection</code> 显示连接失败)</h3><p><strong>❌ 错误表现：</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Test-NetConnection</span> <span class="literal">-ComputerName</span> <span class="number">172.22</span>.x.x <span class="literal">-Port</span> <span class="number">6379</span></span><br><span class="line">PingSucceeded: False</span><br><span class="line">TcpTestSucceeded: False</span><br></pre></td></tr></table></figure>
+
+<p><strong>📌 原因：</strong></p>
+<ul>
+<li><strong>虚拟化网络隔离：</strong> WSL2（Windows Subsystem for Linux 2）运行在 Hyper-V 虚拟机中，虚拟机与主机系统（Windows）通过虚拟网络相连。因此，WSL2 实例和 Windows 主机之间并没有直接的网络连接。</li>
+<li><strong>Redis 默认绑定地址：</strong> Redis 默认绑定 <code>127.0.0.1</code>，即本地回环地址（localhost），这意味着它只能在自己的环境中被访问，外部请求会被拒绝。</li>
+<li><strong>端口转发缺失：</strong> Windows 默认不会将 WSL2 内部的 Redis 服务暴露给 Windows 主机，需要手动配置端口转发。</li>
+</ul>
+<p><strong>✅ 解决方法：</strong></p>
+<ol>
+<li><p><strong>修改 Redis 配置</strong>：使 Redis 监听所有网络接口。</p>
+<ul>
+<li>修改 Redis 配置文件 <code>/etc/redis/redis.conf</code>，将 <code>bind 127.0.0.1</code> 改为 <code>bind 0.0.0.0</code>，允许所有 IP 访问。</li>
+<li>设置 <code>protected-mode no</code>，关闭保护模式。</li>
+</ul>
+</li>
+<li><p><strong>设置端口转发：</strong> 使用 Windows 的 <code>netsh</code> 命令进行端口转发，将 Redis 在 WSL2 中的服务暴露给 Windows 主机：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh interface portproxy add v4tov4 listenport=<span class="number">6379</span> listenaddress=<span class="number">127.0</span>.<span class="number">0.1</span> connectport=<span class="number">6379</span> connectaddress=&lt;WSL2_IP&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这样，当你通过 <code>127.0.0.1:6379</code> 访问 Redis 时，流量会被转发到 WSL2 内部的 Redis 服务。</p>
+</li>
+</ol>
+<hr>
+<h3 id="🧩-问题-2：wsl-报错-“检测到-localhost-代理配置，但未镜像到-WSL…”"><a href="#🧩-问题-2：wsl-报错-“检测到-localhost-代理配置，但未镜像到-WSL…”" class="headerlink" title="🧩 问题 2：wsl 报错 “检测到 localhost 代理配置，但未镜像到 WSL…”"></a>🧩 问题 2：<code>wsl</code> 报错 “检测到 localhost 代理配置，但未镜像到 WSL…”</h3><p><strong>📌 原因：</strong></p>
+<ul>
+<li><strong>代理配置问题：</strong> WSL2 中某些类型的代理配置，特别是 localhost 代理，并不能自动映射到 WSL2 中。WSL2 不支持某些类型的代理，尤其是在 NAT 网络模式下。</li>
+<li><strong>对 Redis 无影响：</strong> 这种警告并不会影响 Redis 的正常访问，只是与网络代理相关的配置问题。</li>
+</ul>
+<p><strong>✅ 解决方法：</strong></p>
+<ul>
+<li>如果不使用代理，忽略该错误。</li>
+<li>如果配置了代理，可以手动调整 <code>netsh winhttp</code> 或在 Windows 系统中设置代理。</li>
+</ul>
+<hr>
+<h3 id="🧩-问题-3：Spring-Boot-报错：Unable-to-connect-to-localhost-6379"><a href="#🧩-问题-3：Spring-Boot-报错：Unable-to-connect-to-localhost-6379" class="headerlink" title="🧩 问题 3：Spring Boot 报错：Unable to connect to localhost:6379"></a>🧩 问题 3：Spring Boot 报错：<code>Unable to connect to localhost:6379</code></h3><p><strong>📌 原因：</strong></p>
+<ul>
+<li><strong>Spring Boot 和 Redis 地址不匹配：</strong> Spring Boot 在 Windows 主机上运行，它试图通过 <code>localhost:6379</code> 连接 Redis，但 Redis 运行在 WSL2 中并绑定到自己的本地 IP 地址，Windows 主机无法直接访问 WSL2 内部的服务。</li>
+<li><strong>解决办法：</strong> 将 Spring Boot 配置文件中的 Redis 地址改为 WSL2 的 IP 地址（可以通过 <code>wsl hostname -I</code> 获取）。</li>
+</ul>
+<p><strong>✅ 解决方法：</strong></p>
+<ul>
+<li><p>使用端口转发后，Spring Boot 可以访问 <code>localhost:6379</code>。</p>
+</li>
+<li><p>或者，修改 Spring Boot 配置文件，直接指定 WSL2 IP 地址：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.redis.host</span>=<span class="string">172.22.x.x</span></span><br><span class="line"><span class="attr">spring.redis.port</span>=<span class="string">6379</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="🧩-问题-4：redis-cli-命令未识别"><a href="#🧩-问题-4：redis-cli-命令未识别" class="headerlink" title="🧩 问题 4：redis-cli 命令未识别"></a>🧩 问题 4：<code>redis-cli</code> 命令未识别</h3><p><strong>📌 原因：</strong></p>
+<ul>
+<li><strong>Redis CLI 工具未安装：</strong> <code>redis-cli</code> 是 Redis 客户端命令行工具，它不在 Windows 默认安装中。</li>
+<li><strong>Redis CLI 位于 WSL2 环境内：</strong> 如果你是在 WSL2 环境下安装 Redis，则 <code>redis-cli</code> 只能在 WSL2 中直接访问。</li>
+</ul>
+<p><strong>✅ 解决方法：</strong></p>
+<ul>
+<li>在 WSL2 中使用 <code>redis-cli</code> 进行连接。</li>
+<li>或者，安装 Redis for Windows，或者从其他客户端（如 Python 或 Java）连接到 Redis。</li>
+</ul>
+<hr>
+<h2 id="🧠-基础知识：计算机网络、操作系统和编程语言"><a href="#🧠-基础知识：计算机网络、操作系统和编程语言" class="headerlink" title="🧠 基础知识：计算机网络、操作系统和编程语言"></a>🧠 基础知识：计算机网络、操作系统和编程语言</h2><hr>
+<h3 id="1-计算机网络"><a href="#1-计算机网络" class="headerlink" title="1. 计算机网络"></a>1. <strong>计算机网络</strong></h3><h4 id="网络协议与通信"><a href="#网络协议与通信" class="headerlink" title="网络协议与通信"></a>网络协议与通信</h4><ul>
+<li><p><strong>OSI七层模型</strong>：从物理层到应用层，每一层处理不同的功能。网络协议的每个部分都可以看作是操作系统和应用程序之间的中介。</p>
+</li>
+<li><p><strong>TCP&#x2F;IP协议栈</strong>：在网络通信中，TCP&#x2F;IP 协议栈通常被用来定义从数据链路层到应用层的通信方式。在你的例子中，Redis 使用 TCP 协议，端口号 <code>6379</code> 区分了 Redis 服务。</p>
+</li>
+</ul>
+<h4 id="本地回环与-IP-地址"><a href="#本地回环与-IP-地址" class="headerlink" title="本地回环与 IP 地址"></a>本地回环与 IP 地址</h4><ul>
+<li><p><strong>回环地址 (Loopback)</strong>：<code>127.0.0.1</code> 是计算机的回环地址，仅在本地通信时使用，通过 <strong>TCP&#x2F;IP 协议栈</strong> 将流量直接返回到本机，而不经过网络硬件。</p>
+</li>
+<li><p><strong>端口转发与 NAT</strong>：通过端口转发或网络地址转换（NAT），外部流量可以被转发到内网服务。这种机制使得通过不同 IP 和端口的流量能够正确路由。</p>
+</li>
+</ul>
+<h4 id="本地与虚拟机通信"><a href="#本地与虚拟机通信" class="headerlink" title="本地与虚拟机通信"></a>本地与虚拟机通信</h4><ul>
+<li><strong>WSL2与虚拟化技术</strong>：WSL2 在 Windows 上运行 Linux 内核的虚拟机，利用 <strong>Hyper-V 虚拟化技术</strong>。这允许在 Linux 环境中运行应用程序，但它和宿主 Windows 操作系统之间是通过 <strong>NAT</strong> 隔离的，需要进行端口转发或桥接网络。</li>
+</ul>
+<hr>
+<h3 id="2-操作系统"><a href="#2-操作系统" class="headerlink" title="2. 操作系统"></a>2. <strong>操作系统</strong></h3><h4 id="网络配置与端口转发"><a href="#网络配置与端口转发" class="headerlink" title="网络配置与端口转发"></a>网络配置与端口转发</h4><ul>
+<li><p><strong>端口映射和代理</strong>：通过修改网络栈的路由表，Windows 可以通过 <strong>netsh</strong> 工具将流量从 <code>127.0.0.1</code> 的某个端口转发到 WSL2 中的 Redis 服务。这种修改涉及到操作系统内核对网络流量的路由和转发处理。</p>
+</li>
+<li><p><strong>Socket 和 TCP&#x2F;IP 协议</strong>：网络通信是通过 <strong>Socket</strong> 完成的，它是操作系统提供的接口，允许程序进行网络通信。每次通过 TCP 协议传输数据时，都会经过操作系统的网络栈。</p>
+</li>
+</ul>
+<h4 id="虚拟机和容器化"><a href="#虚拟机和容器化" class="headerlink" title="虚拟机和容器化"></a>虚拟机和容器化</h4><ul>
+<li><strong>虚拟化与容器化</strong>：在 WSL2 中，Linux 内核运行在一个轻量级的虚拟机中，通过虚拟网络接口与宿主机进行通信。虚拟化技术允许你在同一台物理机上运行多个操作系统。</li>
+</ul>
+<hr>
+<h3 id="3-Redis-内部原理"><a href="#3-Redis-内部原理" class="headerlink" title="3. Redis 内部原理"></a>3. <strong>Redis 内部原理</strong></h3><h4 id="内存数据库与单线程模型"><a href="#内存数据库与单线程模型" class="headerlink" title="内存数据库与单线程模型"></a>内存数据库与单线程模型</h4><ul>
+<li><p><strong>内存数据库</strong>：Redis 是一个基于内存的数据库，所有数据都存储在 RAM 中，快速的读写操作是它的核心特点。不同于传统的磁盘数据库，它没有磁盘 IO 操作的开销。</p>
+</li>
+<li><p><strong>单线程模型</strong>：Redis 使用单线程来处理所有请求，但通过 <strong>I&#x2F;O 多路复用</strong> 技术，可以异步处理多个并发请求，使得 Redis 在高并发情况下依然表现出色。</p>
+</li>
+</ul>
+<h4 id="数据结构与操作"><a href="#数据结构与操作" class="headerlink" title="数据结构与操作"></a>数据结构与操作</h4><ul>
+<li><strong>内置数据结构</strong>：Redis 提供多种内置数据结构，如字符串、哈希、列表、集合等，这些数据结构都在内存中以高效的方式存储和访问。</li>
+</ul>
+<hr>
+<h3 id="4-Spring-Boot-与-Redis"><a href="#4-Spring-Boot-与-Redis" class="headerlink" title="4. Spring Boot 与 Redis"></a>4. <strong>Spring Boot 与 Redis</strong></h3><h4 id="Spring-Boot-简化配置"><a href="#Spring-Boot-简化配置" class="headerlink" title="Spring Boot 简化配置"></a>Spring Boot 简化配置</h4><ul>
+<li><strong>自动配置</strong>：Spring Boot 提供了简化的配置机制，自动为应用程序配置连接池、Redis 客户端等。Spring Boot 中的 <code>Spring Data Redis</code> 模块封装了与 Redis 的交互，使得开发者不需要直接处理底层协议。</li>
+</ul>
+<h4 id="Spring-Data-Redis-操作"><a href="#Spring-Data-Redis-操作" class="headerlink" title="Spring Data Redis 操作"></a>Spring Data Redis 操作</h4><ul>
+<li><strong>Redis 客户端</strong>：在 Spring Boot 中，Redis 的连接管理通常通过 <code>Jedis</code> 或 <code>Lettuce</code> 客户端实现。它们通过 TCP 套接字与 Redis 服务器进行通信，进行数据读写操作。</li>
+</ul>
+<hr>
+<h3 id="5-操作系统底层：网络通信的内核机制"><a href="#5-操作系统底层：网络通信的内核机制" class="headerlink" title="5. 操作系统底层：网络通信的内核机制"></a>5. <strong>操作系统底层：网络通信的内核机制</strong></h3><h4 id="Socket-与-TCP-IP-协议栈"><a href="#Socket-与-TCP-IP-协议栈" class="headerlink" title="Socket 与 TCP&#x2F;IP 协议栈"></a>Socket 与 TCP&#x2F;IP 协议栈</h4><ul>
+<li><strong>Socket</strong>：操作系统通过 <strong>Socket</strong> 提供的接口实现网络通信。每个网络连接都会通过操作系统内核处理。Redis 通过 TCP 套接字监听客户端请求，当你使用客户端（如 <code>redis-cli</code>）时，它会通过操作系统的网络栈与 Redis 服务端通信。</li>
+</ul>
+<h4 id="I-O-多路复用"><a href="#I-O-多路复用" class="headerlink" title="I&#x2F;O 多路复用"></a>I&#x2F;O 多路复用</h4><ul>
+<li><strong>I&#x2F;O 多路复用</strong>：Redis 使用 I&#x2F;O 多路复用技术来处理多个并发客户端的请求，避免了创建多个线程的开销，保持了高效的资源利用。</li>
+</ul>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li><p><strong>网络协议与通信</strong>：理解 OSI 模型和 TCP&#x2F;IP 协议栈可以帮助你深入理解计算机如何在不同层次之间进行数据传输和处理。</p>
+</li>
+<li><p><strong>操作系统与虚拟化</strong>：WSL2 的虚拟化技术和端口转发机制使得 Linux 应用可以在 Windows 上运行，同时依赖操作系统的网络栈来确保流量转发。</p>
+</li>
+<li><p><strong>Redis 内部原理</strong>：作为一个内存数据库，Redis 通过单线程和 I&#x2F;O 多路复用技术高效地处理大量并发请求，利用内存存储数据结构来提供快速的数据访问。</p>
+</li>
+<li><p><strong>Spring Boot 与 Redis</strong>：Spring Boot 简化了应用程序与 Redis 的连接配置，而 <code>Spring Data Redis</code> 使得与 Redis 的交互变得更加简洁和自动化。</p>
+</li>
+<li><p><strong>底层网络通信</strong>：操作系统通过 Socket 和网络协议栈来管理网络通信，确保数据从客户端正确传输到服务器。</p>
+</li>
+</ol>
+<p>通过这些底层概念的理解，你可以清晰地把握网络通信、Redis 数据库以及操作系统在实际应用中的运作原理。如果你需要更深入的解释或有其他问题，随时告诉我！</p>
+<hr>
+<h2 id="🧠-总结记忆口诀"><a href="#🧠-总结记忆口诀" class="headerlink" title="🧠 总结记忆口诀"></a>🧠 总结记忆口诀</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">WSL隔网络，绑定要放开；</span><br><span class="line">127只本机，转发才可来；</span><br><span class="line">Redis别锁死，0.0全打开；</span><br><span class="line">Spring想连它，IP写明白。</span><br></pre></td></tr></table></figure>
 
                 
             </div>
@@ -517,7 +640,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://sansansan3333.github.io/2025/04/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3-debug/">https://sansansan3333.github.io/2025/04/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3-debug/</a>
+                    <a href="https://sansansan3333.github.io/2025/05/06/paicoding-problems-solution/">https://sansansan3333.github.io/2025/05/06/paicoding-problems-solution/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -555,8 +678,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                    <span class="chip bg-color">数据库</span>
+                                <a href="/tags/PaiCoding-redis-%E9%80%9A%E4%BF%A1/">
+                                    <span class="chip bg-color">PaiCoding,redis,通信</span>
                                 </a>
                             
                         </div>
@@ -600,17 +723,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2025/04/08/%E6%8A%80%E6%9C%AF%E6%B4%BE%E9%A1%B9%E7%9B%AE/">
+                <a href="/2025/05/06/paicoding-problems-solution/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="技术派项目--业务构建思考（基于redis实现的活跃度排行）">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="paicoding_problems_solution">
                         
-                        <span class="card-title">技术派项目--业务构建思考（基于redis实现的活跃度排行）</span>
+                        <span class="card-title">paicoding_problems_solution</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -620,26 +744,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-04-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-05-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Project/" class="post-category">
-                                    Project
+                            <a href="/categories/Project-Debug/" class="post-category">
+                                    Project,Debug
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PaiCoding-%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0/">
-                        <span class="chip bg-color">PaiCoding,模块实现</span>
+                    <a href="/tags/PaiCoding-redis-%E9%80%9A%E4%BF%A1/">
+                        <span class="chip bg-color">PaiCoding,redis,通信</span>
                     </a>
                     
                 </div>
@@ -653,13 +778,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/04/08/Mybatis%E5%AD%A6%E4%B9%A0-1/">
+                <a href="/2025/04/29/Spring-%E4%BA%8B%E5%8A%A1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Mybatis学习 - 1 快速入门">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Spring-事务，springMVC">
                         
-                        <span class="card-title">Mybatis学习 - 1 快速入门</span>
+                        <span class="card-title">Spring-事务，springMVC</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -670,12 +795,16 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-04-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-04-29
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            SAN.
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Spring/" class="post-category">
+                                    Spring
+                                </a>
+                            
                             
                         </span>
                     </div>

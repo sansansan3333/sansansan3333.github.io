@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据库相关-debug, 学习，生活">
+    <meta name="keywords" content="Spring依赖注入, 学习，生活">
     <meta name="description" content="san的个人博客，关于学习和生活">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>数据库相关-debug | SAN~blog</title>
+    <title>Spring依赖注入 | SAN~blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据库相关-debug</h1>
+                    <h1 class="description center-align post-title">Spring依赖注入</h1>
                 </div>
             </div>
         </div>
@@ -441,8 +441,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                <span class="chip bg-color">数据库</span>
+                            <a href="/tags/Spring/">
+                                <span class="chip bg-color">Spring</span>
                             </a>
                         
                     </div>
@@ -453,8 +453,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Debug/" class="post-category">
-                                Debug
+                            <a href="/categories/Spring/" class="post-category">
+                                Spring
                             </a>
                         
                     </div>
@@ -466,7 +466,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2025-04-08
+                    2025-04-24
                 </div>
                 
 
@@ -487,10 +487,72 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="lombok版本不兼容"><a href="#lombok版本不兼容" class="headerlink" title="lombok版本不兼容"></a>lombok版本不兼容</h2><p>出现：java: java.lang.NoSuchFieldError: Class com.sun.tools.javac.tree.JCTree$JCImport does not have member field ‘com.sun.tools.javac.tree.JCTree qualid’</p>
-<p>通常为版本不兼容</p>
-<p>查看跟jdk,兼容的版本，更新依赖</p>
-<h2 id="Unknown-Column"><a href="#Unknown-Column" class="headerlink" title="Unknown Column"></a>Unknown Column</h2><p>表里没有这一列<br>去除映射中的查询，或者是否缺失？</p>
+                <h1 id="Spring-依赖注入（Dependency-Injection）笔记"><a href="#Spring-依赖注入（Dependency-Injection）笔记" class="headerlink" title="Spring 依赖注入（Dependency Injection）笔记"></a>Spring 依赖注入（Dependency Injection）笔记</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><p><strong>依赖注入（DI）</strong> 是 Spring 框架的核心特性之一，通过将类的依赖（如其他对象）由容器在运行时注入，降低类之间的耦合度，实现<strong>控制反转（IoC）</strong>。</p>
+<hr>
+<h2 id="2-IoC-容器"><a href="#2-IoC-容器" class="headerlink" title="2. IoC 容器"></a>2. IoC 容器</h2><ul>
+<li><strong>ApplicationContext</strong>：Spring 的高级容器接口，支持国际化事件发布、Bean 自动装配等功能。</li>
+<li><strong>BeanFactory</strong>：基本容器接口，延迟初始化 Bean。</li>
+</ul>
+<hr>
+<h2 id="3-注入方式"><a href="#3-注入方式" class="headerlink" title="3. 注入方式"></a>3. 注入方式</h2><h3 id="3-1-构造器注入（Constructor-Injection）"><a href="#3-1-构造器注入（Constructor-Injection）" class="headerlink" title="3.1 构造器注入（Constructor Injection）"></a>3.1 构造器注入（Constructor Injection）</h3><ul>
+<li>通过类的构造方法传入依赖。</li>
+<li>优点：依赖不可变，强制依赖的注入；适合必需依赖。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> UserRepository repo;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span>  <span class="comment">// Spring 4.3+ 若只有一个构造器，可省略</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UserService</span><span class="params">(UserRepository repo)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.repo = repo;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-Setter-方法注入（Setter-Injection）"><a href="#3-2-Setter-方法注入（Setter-Injection）" class="headerlink" title="3.2 Setter 方法注入（Setter Injection）"></a>3.2 Setter 方法注入（Setter Injection）</h3><ul>
+<li>通过公开的 setter 方法注入依赖。</li>
+<li>优点：可选依赖更灵活；适合需要后期配置的依赖。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OrderService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> PaymentService paymentService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPaymentService</span><span class="params">(PaymentService paymentService)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.paymentService = paymentService;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-字段注入（Field-Injection）"><a href="#3-3-字段注入（Field-Injection）" class="headerlink" title="3.3 字段注入（Field Injection）"></a>3.3 字段注入（Field Injection）</h3><ul>
+<li>直接在字段上标注注入。</li>
+<li>缺点：不利于单元测试，不推荐用于生产。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NotificationService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> EmailSender emailSender;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="4-注解与配置"><a href="#4-注解与配置" class="headerlink" title="4. 注解与配置"></a>4. 注解与配置</h2><h3 id="4-1-常用注解"><a href="#4-1-常用注解" class="headerlink" title="4.1 常用注解"></a>4.1 常用注解</h3><ul>
+<li><code>@Component</code>：将类注册为 Spring Bean。</li>
+<li><code>@Service</code>、<code>@Repository</code>、<code>@Controller</code>：分别用于标注业务层、数据访问层、控制层的 Bean，语义化注解。</li>
+<li><code>@Autowired</code>：自动注入 Bean，按类型匹配。</li>
+<li><code>@Qualifier</code>：与 <code>@Autowired</code> 配合使用，按名称或自定义限定符注入。</li>
+<li><code>@Resource</code>（JSR-250）：按照名称注入。</li>
+<li><code>@Inject</code>（JSR-330）：与 <code>@Autowired</code> 类似。</li>
+</ul>
+<h3 id="4-2-XML-配置"><a href="#4-2-XML-配置" class="headerlink" title="4.2 XML 配置"></a>4.2 XML 配置</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:context</span>=<span class="string">&quot;http://www.springframework.org/schema/context&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;...&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 自动扫描组件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.example&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 构造器注入示例 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userService&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.example.UserService&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">ref</span>=<span class="string">&quot;userRepository&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Setter 注入示例 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;orderService&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.example.OrderService&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;paymentService&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;paymentService&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-Java-配置（JavaConfig）"><a href="#4-3-Java-配置（JavaConfig）" class="headerlink" title="4.3 Java 配置（JavaConfig）"></a>4.3 Java 配置（JavaConfig）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;com.example&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AppConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> UserRepository <span class="title function_">userRepository</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">UserRepository</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> UserService <span class="title function_">userService</span><span class="params">(UserRepository repo)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">UserService</span>(repo);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="5-Bean-的作用域"><a href="#5-Bean-的作用域" class="headerlink" title="5. Bean 的作用域"></a>5. Bean 的作用域</h2><ul>
+<li><code>singleton</code>（默认）：单例，整个容器生命周期内只有一个实例。</li>
+<li><code>prototype</code>：多例，每次请求都会创建新实例。</li>
+<li><code>request</code>：每次 HTTP 请求一个实例（Web 环境）。</li>
+<li><code>session</code>：每个 HTTP Session 一个实例（Web 环境）。</li>
+<li>自定义 scope：可通过 <code>@Scope</code> 注解自定义。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Scope(&quot;prototype&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TaskProcessor</span> &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="6-循环依赖处理"><a href="#6-循环依赖处理" class="headerlink" title="6. 循环依赖处理"></a>6. 循环依赖处理</h2><ul>
+<li><strong>构造器注入</strong>：默认无法解决循环依赖。</li>
+<li><strong>Setter&#x2F;字段注入</strong>：Spring 通过三级缓存可解决单例 Bean 的循环依赖。</li>
+</ul>
+<hr>
+<h2 id="7-小结"><a href="#7-小结" class="headerlink" title="7. 小结"></a>7. 小结</h2><ul>
+<li>依赖注入降低了类间耦合，提高可测试性。</li>
+<li>推荐使用 <strong>构造器注入</strong>，配合 <code>@Component</code> 及 <code>@Autowired</code>。</li>
+<li>在 XML、注解、JavaConfig 中灵活选择最适合项目需求的配置方式。</li>
+</ul>
+<hr>
+<p><strong>参考资料</strong>：</p>
+<ul>
+<li>《Spring 官方文档》</li>
+<li>《Spring in Action》</li>
+<li>Baeldung: <a target="_blank" rel="noopener" href="https://www.baeldung.com/spring-dependency-injection">https://www.baeldung.com/spring-dependency-injection</a></li>
+</ul>
 
                 
             </div>
@@ -517,7 +579,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://sansansan3333.github.io/2025/04/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3-debug/">https://sansansan3333.github.io/2025/04/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3-debug/</a>
+                    <a href="https://sansansan3333.github.io/2025/04/24/Spring%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">https://sansansan3333.github.io/2025/04/24/Spring%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -555,8 +617,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                    <span class="chip bg-color">数据库</span>
+                                <a href="/tags/Spring/">
+                                    <span class="chip bg-color">Spring</span>
                                 </a>
                             
                         </div>
@@ -604,13 +666,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2025/04/08/%E6%8A%80%E6%9C%AF%E6%B4%BE%E9%A1%B9%E7%9B%AE/">
+                <a href="/2025/04/27/Spring%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="技术派项目--业务构建思考（基于redis实现的活跃度排行）">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Spring中的事务">
                         
-                        <span class="card-title">技术派项目--业务构建思考（基于redis实现的活跃度排行）</span>
+                        <span class="card-title">Spring中的事务</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -621,27 +683,15 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-04-08
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-04-27
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Project/" class="post-category">
-                                    Project
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            SAN.
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/PaiCoding-%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0/">
-                        <span class="chip bg-color">PaiCoding,模块实现</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -653,13 +703,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/04/08/Mybatis%E5%AD%A6%E4%B9%A0-1/">
+                <a href="/2025/04/24/Spring-SpringFrameWork/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Mybatis学习 - 1 快速入门">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Spring-SpringFrameWork">
                         
-                        <span class="card-title">Mybatis学习 - 1 快速入门</span>
+                        <span class="card-title">Spring-SpringFrameWork</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -670,12 +720,16 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-04-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-04-24
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            SAN.
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Spring/" class="post-category">
+                                    Spring
+                                </a>
+                            
                             
                         </span>
                     </div>
